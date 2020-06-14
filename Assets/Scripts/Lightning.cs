@@ -19,13 +19,17 @@ public class Lightning : MonoBehaviour
     void Update()
     {
         tempTime += Time.deltaTime;
-        if (tempTime > 1.75) {
-            if (pointLight.intensity == 0) {
+        if (pointLight.intensity == 0) {
+            if (tempTime > 0.8) {
                 pointLight.intensity = 1;
-            } else {
-                pointLight.intensity = 0;
+                tempTime = 0;
             }
-            tempTime = 0;
+        }
+        else {
+            if (tempTime > 1.8) {
+                pointLight.intensity = 0;
+                tempTime = 0;
+            }
         }
     }
 }

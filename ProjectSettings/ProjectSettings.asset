@@ -4,7 +4,7 @@
 PlayerSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 20
-  productGUID: 00000000000000000000000000000000
+  productGUID: c10b3a7ffed802b4bab97b1bfedd3d05
   AndroidProfiler: 0
   AndroidFilterTouchesWhenObscured: 0
   AndroidEnableSustainedPerformanceMode: 0
@@ -647,7 +647,7 @@ PlayerSettings:
   apiCompatibilityLevel: 6
   cloudProjectId: 65ce7f7b-9bf8-4129-86fb-b3ed6fc51624
   framebufferDepthMemorylessMode: 0
-  projectName: 
+  projectName: Fadeaway
   organizationId: sunshinestudios
   cloudEnabled: 0
   enableNativePlatformBackendsForNewInputSystem: 0

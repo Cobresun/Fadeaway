@@ -115,8 +115,6 @@ namespace TDGP
 
             Instantiate(OnDeadSprites[Random.Range(0, OnDeadSprites.Length)], transform.position, Quaternion.identity);
 
-            spawner.EnemyRemoved();
-
             Destroy(gameObject);
 
         }

@@ -1,7 +1,5 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System.Security.Cryptography;
-//using System.Diagnostics;
 
 namespace TDGP.Demo
 {
@@ -126,41 +124,5 @@ namespace TDGP.Demo
 			Instantiate(_enemy, randomPosition, Quaternion.identity);
 			Debug.Log("Spawning Zombie");
         }
-
-
-
-		/*
-		// original code
-
-		public GameObject Enemy;
-
-		
-		public float SpawnTime = 0.8f;
-
-		
-		public int MaxEnemiesOnScreen = 10;
-	
-		private int currentEnemyCount = 0;
-
-		void Start ()
-		{
-			InvokeRepeating ("SpawnEnemy", 0f, SpawnTime);
-		}
-
-		public void EnemyRemoved ()
-		{
-			currentEnemyCount--;
-		}
-
-		private void SpawnEnemy ()
-		{
-			if (currentEnemyCount >= MaxEnemiesOnScreen)
-				return;
-			
-			currentEnemyCount++;
-			var position = new Vector2 (Random.Range (1, 11), Random.Range (4, 11));
-			Instantiate (Enemy, position, Quaternion.identity);
-		}
-		*/
 	}
 }

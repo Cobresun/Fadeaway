@@ -162,7 +162,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 407056, guid: 89bb0861e716f4d32a6797e38f7c5515, type: 3}
       propertyPath: m_RootOrder
-      value: 5
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 407056, guid: 89bb0861e716f4d32a6797e38f7c5515, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -228,7 +228,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 469760, guid: 7fc870bdd05f04611844113a667a0944, type: 3}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 469760, guid: 7fc870bdd05f04611844113a667a0944, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -535,7 +535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &772663145
 MonoBehaviour:
@@ -576,6 +576,10 @@ MonoBehaviour:
   - name: Second Wave
     enemy: {fileID: 198648, guid: fd44b04c0c5cd49108e44c3b77603761, type: 3}
     count: 8
+    rate: 1
+  - name: Third Wave
+    enemy: {fileID: 198648, guid: fd44b04c0c5cd49108e44c3b77603761, type: 3}
+    count: 12
     rate: 1
   timeBetweenWaves: 3
   waveCountdown: 0
@@ -620,7 +624,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 479074, guid: bef5c470e16954741a234e3e5c06b544, type: 3}
       propertyPath: m_RootOrder
-      value: 1
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 479074, guid: bef5c470e16954741a234e3e5c06b544, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -686,7 +690,7 @@ Transform:
   m_Children:
   - {fileID: 1719431018}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1719431017
 GameObject:
@@ -2858,7 +2862,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 498248, guid: 8ae24b3578c02416e8545abd4a961055, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 498248, guid: 8ae24b3578c02416e8545abd4a961055, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -2923,7 +2927,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 420028, guid: 921280ab7a5b64862bb0051e1d7a69c1, type: 3}
       propertyPath: m_RootOrder
-      value: 6
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 420028, guid: 921280ab7a5b64862bb0051e1d7a69c1, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

@@ -12,6 +12,7 @@ namespace TDGP.Demo
 		public enum SpawnState { SPAWNING, WAITING, COUNTING };
 
 		public Text waveText;
+		public Text killCountText;
 
 		[System.Serializable]
 		public class Wave
@@ -20,7 +21,6 @@ namespace TDGP.Demo
 			public GameObject enemy;
 			public int count;
 			public float rate;
-
         }
 
 		private int nextWave = 0;
@@ -37,10 +37,12 @@ namespace TDGP.Demo
         {
 			waveCountdown = timeBetweenWaves;
 			waveText.text = "";
+			killCountText.text = "";
         }
 
 		void Update()
         {
+			UpdateKillCount();
 
 			if (state == SpawnState.WAITING)
             {
@@ -76,6 +78,20 @@ namespace TDGP.Demo
 					waveText.text = nextWaveDescription;
 				}
 			}
+
+		}
+
+		void UpdateKillCount()
+        {
+			// Update kill count
+			searchCountdown -= Time.deltaTime;
+
+			if (searchCountdown <= 0f)
+			{
+				searchCountdown = 0.2f;
+				int totalZom = waves[nextWave].count;
+				killCountText.text = (GameObject.FindGameObjectsWithTag("Enemy").Length) + "/" + totalZom;
+			}
 		}
 
 		void WaveCompleted()
@@ -105,7 +121,7 @@ namespace TDGP.Demo
 
 			if (searchCountdown <= 0f)
             {
-				searchCountdown = 1f;
+				searchCountdown = 0.2f;
 				if (GameObject.FindGameObjectWithTag("Enemy") == null)
 				{
 					return false;

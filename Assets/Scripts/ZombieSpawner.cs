@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
+using UnityEngine.UI;
 using System.Collections;
+using System.Globalization;
 
 namespace TDGP.Demo
 {
@@ -8,6 +10,8 @@ namespace TDGP.Demo
 	{
 		
 		public enum SpawnState { SPAWNING, WAITING, COUNTING };
+
+		public Text waveText;
 
 		[System.Serializable]
 		public class Wave
@@ -32,6 +36,7 @@ namespace TDGP.Demo
 		void Start()
         {
 			waveCountdown = timeBetweenWaves;
+			waveText.text = "";
         }
 
 		void Update()
@@ -56,6 +61,7 @@ namespace TDGP.Demo
 				if (state != SpawnState.SPAWNING)
                 {
 					// Start spawning here
+					waveText.text = "";
 					Debug.Log("Starting Wave");
 					StartCoroutine(SpawnWave(waves[nextWave]));
                 }
@@ -63,6 +69,12 @@ namespace TDGP.Demo
 			else
 			{
 				waveCountdown -= Time.deltaTime;
+				
+				if (waveText.text == "")
+                {
+					string nextWaveDescription = "Starting Wave " + (nextWave + 1).ToString() + "!";
+					waveText.text = nextWaveDescription;
+				}
 			}
 		}
 
@@ -77,8 +89,10 @@ namespace TDGP.Demo
 			if (nextWave + 1 > waves.Length - 1)
             {
 				nextWave = 0;
-				Debug.Log("All waves done, looping now.");
-            }
+				Debug.Log("All waves done.");
+				waveText.text = "YOU'VE SAVED THE PRIME MINISTER!";
+				waveCountdown = 999;
+			}
             else
             {
 				nextWave += 1;
@@ -119,10 +133,9 @@ namespace TDGP.Demo
 
 		void SpawnEnemy(GameObject _enemy)
         {
-			// right now just a spot on the map, hardcoded width and height, how do we find this programmatically?
+			// right now just a random spot on the map, hardcoded width and height, how do we find this programmatically?
 			Vector2 randomPosition = new Vector2(Random.Range(-8, 8), Random.Range(-5, 5)); 
 			Instantiate(_enemy, randomPosition, Quaternion.identity);
-			//Debug.Log("Spawning Zombie");
         }
 	}
 }

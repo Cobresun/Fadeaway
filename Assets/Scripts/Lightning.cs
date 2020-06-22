@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+//using System.Diagnostics;
 using UnityEngine;
 using UnityEngine.Experimental.Rendering.Universal;
 
@@ -14,7 +15,7 @@ public class Lightning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextFlash = Random.Range(1, 3);
+        nextFlash = Random.Range(2.5f, 3.5f);
     }
 
     // Update is called once per frame
@@ -22,24 +23,36 @@ public class Lightning : MonoBehaviour
     {
         timeSinceFlash += Time.deltaTime;
 
-        if (pointLight.intensity >= 0) {
-            pointLight.intensity -= 0.002f;
-            if (pointLight.intensity <= 0.6f) {
-                pointLight.intensity -= 0.001f;
-            }
-            else if (pointLight.intensity <= 1){
-                flashBuildUp += Time.deltaTime*Random.Range(0.07f, 0.02f);
-            }
-
-            if (flashBuildUp >= Random.Range(1.0f, 1.1f)){
-                pointLight.intensity += Random.Range(0.3f, 0.6f);
-            }
-        }
-
         if (timeSinceFlash >= nextFlash) {
+            Debug.Log("Flash");
             pointLight.intensity = 1.5f;
             timeSinceFlash = 0;
-            nextFlash = Random.Range(1.5f, 3.0f);
+            nextFlash = Random.Range(2f, 3f);
+        }
+
+        if (pointLight.intensity <= 1.0f && pointLight.intensity > 0.6f)
+        {
+            flashBuildUp += Time.deltaTime * Random.Range(0.07f, 0.02f);
+        }
+
+        if (flashBuildUp >= Random.Range(1.0f, 1.1f))
+        {
+            Debug.Log("Second Flash");
+            pointLight.intensity += Random.Range(0.3f, 0.6f);
+            flashBuildUp = 0f;
+        }
+    }
+
+    void FixedUpdate()
+    {
+        if (pointLight.intensity >= 0)
+        {
+            pointLight.intensity -= Time.deltaTime * 0.8f;                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
+            if (pointLight.intensity <= 0.6f)
+            {
+                pointLight.intensity -= Time.deltaTime * 0.4f;
+            }
+            
         }
     }
 }

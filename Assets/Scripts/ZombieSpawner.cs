@@ -122,7 +122,7 @@ namespace TDGP.Demo
 			// right now just a spot on the map, hardcoded width and height, how do we find this programmatically?
 			Vector2 randomPosition = new Vector2(Random.Range(-8, 8), Random.Range(-5, 5)); 
 			Instantiate(_enemy, randomPosition, Quaternion.identity);
-			Debug.Log("Spawning Zombie");
+			//Debug.Log("Spawning Zombie");
         }
 	}
 }

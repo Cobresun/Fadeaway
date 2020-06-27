@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEngine.Experimental.Rendering.Universal;
 
 namespace TDGP
 {
@@ -36,6 +37,8 @@ namespace TDGP
         private float? knockBackForce;
         private AudioSource audioSource;
         private Rigidbody2D rigidBody2d;
+
+        public Light2D light2d;
 
         private void Awake()
         {
@@ -105,6 +108,9 @@ namespace TDGP
         {
             if (gunClip == null)
                 return;
+
+            light2d.intensity *= 1.05f;
+            light2d.pointLightOuterRadius *= 1.05f;
 
             var bulletClone = gunClip.RequestBullet();
 

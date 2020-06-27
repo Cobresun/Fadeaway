@@ -15,7 +15,7 @@ public class Lightning : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        nextFlash = Random.Range(2.5f, 3.5f);
+        nextFlash = Random.Range(1.5f, 1.5f);
     }
 
     // Update is called once per frame
@@ -27,7 +27,7 @@ public class Lightning : MonoBehaviour
             Debug.Log("Flash");
             pointLight.intensity = 1.5f;
             timeSinceFlash = 0;
-            nextFlash = Random.Range(2f, 3f);
+            nextFlash = Random.Range(1.0f, 2.5f);
         }
 
         if (pointLight.intensity <= 1.0f && pointLight.intensity > 0.6f)
@@ -47,10 +47,10 @@ public class Lightning : MonoBehaviour
     {
         if (pointLight.intensity >= 0)
         {
-            pointLight.intensity -= Time.deltaTime * 0.8f;                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
-            if (pointLight.intensity <= 0.6f)
+            pointLight.intensity -= Time.deltaTime * 1.9f;                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
+            if (pointLight.intensity <= 0.3f)
             {
-                pointLight.intensity -= Time.deltaTime * 0.4f;
+                pointLight.intensity -= Time.deltaTime * 0.1f;
             }
             
         }

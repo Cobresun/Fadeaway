@@ -1,5 +1,6 @@
 using UnityEngine;
 using System.Collections;
+using UnityEngine.Experimental.Rendering.Universal; //2019 VERSIONS
 
 namespace TDGP
 {
@@ -9,6 +10,7 @@ namespace TDGP
 	public class GunTriggerSingle : GunTrigger
 	{
 		private float currentShootSpeed;
+		//public Light2D light2d;
 
 		public override void Awake ()
 		{
@@ -46,6 +48,7 @@ namespace TDGP
 		{
 			if (Input.GetButtonDown (buttonMapping) && OkToShoot ()) {
 				foreach (var barrel in barrels) {
+					//light2d.intensity = 1.3f;
 					barrel.OnFire ();
 				}
 			}
@@ -58,6 +61,7 @@ namespace TDGP
 		{
 			if (Input.GetButton (buttonMapping) && OkToShoot ()) {
 				foreach (var barrel in barrels) {
+					//light2d.intensity = 1.3f;
 					barrel.OnFire ();
 				}
 			}

@@ -109,7 +109,7 @@ namespace TDGP
             if (gunClip == null)
                 return;
 
-            light2d.intensity *= 1.05f;
+            light2d.intensity *= 1.005f;
             light2d.pointLightOuterRadius *= 1.05f;
 
             var bulletClone = gunClip.RequestBullet();

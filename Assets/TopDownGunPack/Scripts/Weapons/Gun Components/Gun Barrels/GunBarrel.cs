@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.Experimental.Rendering.Universal;
+using System.Threading;
 
 namespace TDGP
 {
@@ -101,6 +102,14 @@ namespace TDGP
 
         }
 
+        void FixedUpdate()
+        {
+            if(light2d != null && light2d.intensity > 0f)
+            {
+                light2d.intensity -= Time.deltaTime * 5.5f;
+            }
+        }
+
         /// <summary>
         /// Requests bullet from gun clip and if returned, fires bullet based on barrels rotation.
         /// </summary>
@@ -109,8 +118,10 @@ namespace TDGP
             if (gunClip == null)
                 return;
 
-            light2d.intensity *= 1.005f;
-            light2d.pointLightOuterRadius *= 1.05f;
+            if (light2d != null)
+            {
+                light2d.intensity = 2f;
+            }
 
             var bulletClone = gunClip.RequestBullet();
 

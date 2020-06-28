@@ -2,12 +2,9 @@
 using System.Collections.Generic;
 //using System.Diagnostics;
 using UnityEngine;
-using UnityEngine.Experimental.Rendering.Universal;
 
-public class Lightning : MonoBehaviour
+public class LightningLogic : MonoBehaviour
 {
-
-    public Light2D pointLight; 
     float timeSinceFlash = 0;
     float nextFlash;
     float flashBuildUp = 0;
@@ -25,12 +22,12 @@ public class Lightning : MonoBehaviour
 
         if (timeSinceFlash >= nextFlash) {
             Debug.Log("Flash");
-            pointLight.intensity = 1.5f;
+            GlobalIllumination.updateBrightnessBy(100);
             timeSinceFlash = 0;
             nextFlash = Random.Range(1.0f, 2.5f);
         }
 
-        if (pointLight.intensity <= 1.0f && pointLight.intensity > 0.6f)
+        if (GlobalIllumination.getBrightness() <= 70 && GlobalIllumination.getBrightness() > 40)
         {
             flashBuildUp += Time.deltaTime * Random.Range(0.07f, 0.02f);
         }
@@ -38,19 +35,20 @@ public class Lightning : MonoBehaviour
         if (flashBuildUp >= Random.Range(1.0f, 1.1f))
         {
             Debug.Log("Second Flash");
-            pointLight.intensity += Random.Range(0.3f, 0.6f);
+            GlobalIllumination.updateBrightnessBy(Random.Range(20, 40));
             flashBuildUp = 0f;
         }
     }
 
+    // Fixed fade in light
     void FixedUpdate()
     {
-        if (pointLight.intensity >= 0)
+        if (GlobalIllumination.unlit())
         {
-            pointLight.intensity -= Time.deltaTime * 1.9f;                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
-            if (pointLight.intensity <= 0.3f)
+            GlobalIllumination.updateBrightnessBy(-9);                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
+            if (GlobalIllumination.getBrightness() <= 30)
             {
-                pointLight.intensity -= Time.deltaTime * 0.1f;
+                GlobalIllumination.updateBrightnessBy(-3);
             }
             
         }

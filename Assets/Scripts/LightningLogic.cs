@@ -15,8 +15,8 @@ public class LightningLogic : MonoBehaviour
         nextFlash = Random.Range(1.5f, 1.5f);
     }
 
-    // Update is called once per frame
-    void Update()
+    // Fixed fade in light
+    void FixedUpdate()
     {
         timeSinceFlash += Time.deltaTime;
 
@@ -38,14 +38,10 @@ public class LightningLogic : MonoBehaviour
         //     GlobalIllumination.updateBrightnessBy(Random.Range(0.2f, 0.4f));
         //     flashBuildUp = 0f;
         // }
-    }
 
-    // Fixed fade in light
-    void FixedUpdate()
-    {
         if (!GlobalIllumination.unlit())
         {
-            GlobalIllumination.updateBrightnessBy(-0.01f);                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
+            GlobalIllumination.updateBrightnessBy(-0.02f);                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
             
         }
     }

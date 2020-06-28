@@ -22,34 +22,30 @@ public class LightningLogic : MonoBehaviour
 
         if (timeSinceFlash >= nextFlash) {
             Debug.Log("Flash");
-            GlobalIllumination.updateBrightnessBy(100);
+            GlobalIllumination.updateBrightnessBy(1);
             timeSinceFlash = 0;
             nextFlash = Random.Range(1.0f, 2.5f);
         }
 
-        if (GlobalIllumination.getBrightness() <= 70 && GlobalIllumination.getBrightness() > 40)
-        {
-            flashBuildUp += Time.deltaTime * Random.Range(0.07f, 0.02f);
-        }
+        // if (GlobalIllumination.getBrightness() <= 0.7f && GlobalIllumination.getBrightness() > 0.4f)
+        // {
+        //     flashBuildUp += Time.deltaTime * Random.Range(0.07f, 0.02f);
+        // }
 
-        if (flashBuildUp >= Random.Range(1.0f, 1.1f))
-        {
-            Debug.Log("Second Flash");
-            GlobalIllumination.updateBrightnessBy(Random.Range(20, 40));
-            flashBuildUp = 0f;
-        }
+        // if (flashBuildUp >= Random.Range(1.0f, 1.1f))
+        // {
+        //     Debug.Log("Second Flash");
+        //     GlobalIllumination.updateBrightnessBy(Random.Range(0.2f, 0.4f));
+        //     flashBuildUp = 0f;
+        // }
     }
 
     // Fixed fade in light
     void FixedUpdate()
     {
-        if (GlobalIllumination.unlit())
+        if (!GlobalIllumination.unlit())
         {
-            GlobalIllumination.updateBrightnessBy(-9);                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
-            if (GlobalIllumination.getBrightness() <= 30)
-            {
-                GlobalIllumination.updateBrightnessBy(-3);
-            }
+            GlobalIllumination.updateBrightnessBy(-0.01f);                  // TODO: instead of 0.8f all the time, attach this to a variable based on difficulty
             
         }
     }

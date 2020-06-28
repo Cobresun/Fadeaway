@@ -6,7 +6,7 @@ using UnityEngine.Experimental.Rendering.Universal;
 // Manages the lighting of an entire screen.
 public class GlobalIllumination : MonoBehaviour
 {
-    private static int brightness;
+    private static float brightness;
     
     private static float intensity;
     private static float baseIntensity;
@@ -17,8 +17,8 @@ public class GlobalIllumination : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        baseIntensity = 0.2f;
-        maxIntensity = 0.7f;
+        baseIntensity = 0.3f;
+        maxIntensity = 0.6f;
         intensity = baseIntensity;
         brightness = 0;
         globalLight.intensity = baseIntensity;
@@ -30,9 +30,9 @@ public class GlobalIllumination : MonoBehaviour
         globalLight.intensity = intensity;
     }
 
-    public static void updateBrightnessBy(int percentBrightness) {
-        if (brightness + percentBrightness >= 100) {
-            brightness = 100;
+    public static void updateBrightnessBy(float percentBrightness) {
+        if (brightness + percentBrightness >= 1) {
+            brightness = 1;
         }
         else if (brightness + percentBrightness <= 0) {
             brightness = 0;
@@ -40,11 +40,10 @@ public class GlobalIllumination : MonoBehaviour
         else {
             brightness += percentBrightness;
         }
-
-        intensity = brightness / 100 * (maxIntensity - baseIntensity);
+        intensity = brightness * (maxIntensity - baseIntensity) + baseIntensity;
     }
 
-    public static int getBrightness() {
+    public static float getBrightness() {
         return brightness;
     }
 

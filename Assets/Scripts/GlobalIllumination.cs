@@ -10,7 +10,7 @@ public class GlobalIllumination : MonoBehaviour
     
     private static float intensity;
     private static float baseIntensity;
-    private static float maxIntensity;
+    private static float intensityInterval;
 
     public Light2D globalLight; 
 
@@ -18,7 +18,7 @@ public class GlobalIllumination : MonoBehaviour
     void Start()
     {
         baseIntensity = 0.3f;
-        maxIntensity = 0.6f;
+        intensityInterval = 0.3f;
         intensity = baseIntensity;
         brightness = 0;
         globalLight.intensity = baseIntensity;
@@ -27,6 +27,18 @@ public class GlobalIllumination : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        if (Input.GetKeyDown("n") && baseIntensity > 0) {
+            baseIntensity -= 0.1f;
+        }
+        if (Input.GetKeyDown("m")) {
+            baseIntensity += 0.1f;
+        }
+        if (Input.GetKeyDown("j") && intensityInterval > 0) {
+            intensityInterval -= 0.1f;
+        }
+        if (Input.GetKeyDown("k")) {
+            intensityInterval += 0.1f;
+        }
         globalLight.intensity = intensity;
     }
 
@@ -40,7 +52,7 @@ public class GlobalIllumination : MonoBehaviour
         else {
             brightness += percentBrightness;
         }
-        intensity = brightness * (maxIntensity - baseIntensity) + baseIntensity;
+        intensity = brightness * intensityInterval + baseIntensity;
     }
 
     public static float getBrightness() {

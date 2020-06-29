@@ -1,7 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using System.Net;
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace TDGP.Demo
 {
@@ -21,9 +18,9 @@ namespace TDGP.Demo
 
         }
 
-        void OnCollisionEnter2D(Collision2D other)
+        private void OnTriggerEnter2D(Collider2D other)
         {
-            if (other.collider.CompareTag("Player"))
+            if (other.GetComponent<Collider2D>().CompareTag("Player"))
             {
                 soldier.GetComponent<PlayerMovementHandler>().MoveSpeed *= 2;
                 Destroy(gameObject);

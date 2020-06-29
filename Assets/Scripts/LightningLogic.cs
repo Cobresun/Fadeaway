@@ -21,7 +21,6 @@ public class LightningLogic : MonoBehaviour
         timeSinceFlash += Time.deltaTime;
 
         if (timeSinceFlash >= nextFlash) {
-            Debug.Log("Flash");
             GlobalIllumination.updateBrightnessBy(1);
             timeSinceFlash = 0;
             nextFlash = Random.Range(1.0f, 2.5f);

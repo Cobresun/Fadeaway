@@ -3563,6 +3563,33 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 8ae24b3578c02416e8545abd4a961055, type: 3}
+--- !u!1 &1735171292 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6688474333219845830, guid: 287e77e68aa7dd0499e4de6c519851f1,
+    type: 3}
+  m_PrefabInstance: {fileID: 6688474333624726993}
+  m_PrefabAsset: {fileID: 0}
+--- !u!50 &1735171293
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1735171292}
+  m_BodyType: 1
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 0
+  m_AngularDrag: 0.05
+  m_GravityScale: 1
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!1001 &1916607961
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3705,6 +3732,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: Powerup
+      objectReference: {fileID: 0}
+    - target: {fileID: 6688474333219845832, guid: 287e77e68aa7dd0499e4de6c519851f1,
+        type: 3}
+      propertyPath: m_IsTrigger
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6688474333219845833, guid: 287e77e68aa7dd0499e4de6c519851f1,
         type: 3}
